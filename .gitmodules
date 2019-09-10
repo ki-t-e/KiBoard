@@ -1,0 +1,3 @@
+[submodule "Demo/KIM"]
+	path = Demo/KIM
+	url = https://github.com/ki-t-e/KIM.git

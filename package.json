@@ -1,0 +1,30 @@
+{
+  "name": "ki-board",
+  "version": "0.0.0",
+  "author": {
+    "name": "Kyebego",
+    "url": "https://go.KIBI.family/"
+  },
+  "license": "GPL-3.0-or-later",
+  "description": "Kixt Keyboards",
+  "homepage": "https://github.com/ki-t-e/KiBoard#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ki-t-e/KiBoard.git"
+  },
+  "bugs": "https://github.com/ki-t-e/KiBoard/issues",
+  "devDependencies": {
+    "Roost": "git+https://github.com/marrus-sh/Roost.git#0.5.0",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  },
+  "directories": {
+    "lib": "./Build",
+    "test": "./Tests"
+  },
+  "browser": "Build/KiBoard.js",
+  "scripts": {
+    "prepare": "cake build",
+    "test": "mocha --require coffeescript/register \"./Tests/*.coffee\""
+  }
+}

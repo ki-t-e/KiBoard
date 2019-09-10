@@ -1,0 +1,53 @@
+<!dOcTyPe HTML>
+<TITLE>KiBoard Demo</TITLE>
+<META Charset=utf-8>
+<BODY>
+<DL Style=Margin:Auto;Max-Width:Max-Content>
+<DT>id
+<DD Id=message.id>
+<DT>layout
+<DD Id=message.layout>
+<DT>charset
+<DD Id=message.charset>
+<DT>mode
+<DD Id=message.mode>
+<DT>modifiers
+<DD Id=message.modifiers><DL><DT>Shift<DD Id=message.modifiers.shift><DT>AltGraph<DD Id=message.modifiers.alt-graph><DT>CapsLock<DD Id=message.modifiers.caps-lock>
+<DT>state
+<DD Id=message.state>
+<DT>code
+<DD Id=message.code>
+<DT>key
+<DD Id=message.key>
+<DT>previousState
+<DD Id=message.previous-state>
+<SCRIPT Type=module>
+import QWERTY from './KIM/QWERTY.js'
+import KiBoard from '../Build/KiBoard.js'
+const kiBoard = new KiBoard(QWERTY)
+kiBoard.id = "myKiBoard"
+kiBoard.messager = ( {
+	id,
+	layout,
+	charset,
+	mode,
+	modifiers: { Shift, AltGraph, CapsLock },
+	state,
+	code,
+	key,
+	previousState
+} ) => {
+	document.getElementById("message.id").textContent = id || ""
+	document.getElementById("message.layout").textContent = layout || ""
+	document.getElementById("message.charset").textContent = charset || ""
+	document.getElementById("message.mode").textContent = mode || ""
+	document.getElementById("message.modifiers.shift").textContent = Shift && "on" || "off"
+	document.getElementById("message.modifiers.alt-graph").textContent = AltGraph && "on" || "off"
+	document.getElementById("message.modifiers.caps-lock").textContent = CapsLock && "on" || "off"
+	document.getElementById("message.state").textContent = state || ""
+	document.getElementById("message.code").textContent = code || ""
+	document.getElementById("message.key").textContent = key ? "<" + Array.prototype.map.call(key, s => s.charCodeAt(0).toString(0x10).toUpperCase()).join(", ") + ">" : ""
+	document.getElementById("message.previous-state").textContent = previousState || ""
+}
+kiBoard.attach(document.documentElement)
+</SCRIPT>
